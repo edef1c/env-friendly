@@ -14,6 +14,6 @@ stdenv.mkDerivation {
     description = "An environmentally friendly replacement for /usr/bin/env";
     license = licenses.cc0;
     maintainers = [ "edef <edef@edef.eu>" ];
-    inherit (musl.meta) platforms;
+    platforms = stdenv.lib.platforms.linux;
   };
 }
