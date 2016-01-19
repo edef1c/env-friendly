@@ -1,6 +1,6 @@
 { stdenv, musl, ... }:
 stdenv.mkDerivation {
-  name = "env-1.0.0";
+  name = "env-friendly-1.0.0";
 
   unpackPhase = ''
     cp -v ${./Makefile} Makefile
@@ -9,4 +9,11 @@ stdenv.mkDerivation {
 
   CFLAGS = "-isystem ${musl}/include -B${musl}/lib -L${musl}/lib";
   LDFLAGS = "-static -Wl,--gc-sections";
+
+  meta = with stdenv.lib; {
+    description = "An environmentally friendly replacement for /usr/bin/env";
+    license = licenses.cc0;
+    maintainers = [ "edef <edef@edef.eu>" ];
+    inherit (musl.meta) platforms;
+  };
 }
