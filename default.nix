@@ -1,4 +1,4 @@
-{ stdenv, musl, ... }:
+{ stdenv, musl }:
 stdenv.mkDerivation {
   name = "env-friendly-1.0.0";
 
